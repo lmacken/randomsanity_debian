@@ -1,0 +1,12 @@
+[Unit]
+Description=Sanity check /dev/urandom using the randomsanity.org service
+#Documentation=
+After=network.target sshd-keygen.service
+Wants=systemd-random-seed.service
+
+[Service]
+#EnvironmentFile=/etc/sysconfig/randomsanity
+ExecStart=/usr/local/bin/randomsanity
+
+[Install]
+WantedBy=user.target
