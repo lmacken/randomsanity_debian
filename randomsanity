@@ -5,30 +5,30 @@ then
 fi
 
 checkbytes() {
-        echo "Sanity checking /dev/urandom..."
+        echo "Sanity checking /dev/urandom..." | systemd-cat -p info
         URL="$BASEURL/$1"
         # RESPONSE is an array of response lines from the server
         RESPONSE=( $(wget --quiet --tries=1 --output-document=- --timeout=5 --max-redirect=1 --save-headers "$URL" ) )
         WGET_RESULT=$?
         if [ $WGET_RESULT -ne 0 ]
         then
-                echo $WGET_RESULT
-                echo "wget $URL failed: (${WGET_RESULT})"
+                echo $WGET_RESULT | systemd-cat -p info
+                echo "wget $URL failed: (${WGET_RESULT})" | systemd-cat -p warning
                 return $WGET_RESULT
         fi
         
         last=$(( ${#RESPONSE[@]}-1 ))  # Index of last line
         case "${RESPONSE[$last]}" in
             true)
-                echo 0
+                echo 0 | systemd-cat -p info
                 ;;
             false)
-                echo 1
-                echo "random sanity check failure"
+                echo 1 | systemd-cat -p warn
+                echo "random sanity check failure" | systemd-cat -t randomsanity -p emerg
                 ;;
             *)
-                echo 1
-                echo "Unexpected result from server: ${RESPONSE[$last]}"
+                echo 1 | systemd-cat -p warning
+                echo "Unexpected result from server: ${RESPONSE[$last]}" | systemd-cat -p warning
                 return 1
                 ;;
         esac
