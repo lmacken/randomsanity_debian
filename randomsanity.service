@@ -1,7 +1,6 @@
 [Unit]
 Description=Sanity check /dev/urandom using the randomsanity.org service
-#Documentation=
-After=network.target sshd-keygen.service
+After=network.target
 Wants=systemd-random-seed.service
 
 [Service]
