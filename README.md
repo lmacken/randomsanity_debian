@@ -2,7 +2,7 @@ Red Hat/Fedora package to sanity check /dev/urandom, using the randomsanity.org 
 
 Installing the RPM:
 
-    sudo rpm -ivh https://github.com/lmacken/randomsanity_redhat/releases/download/master/randomsanity-1.0-1.fc25.noarch.rpm
+    sudo rpm -ivh https://github.com/lmacken/randomsanity_redhat/releases/download/v1.0/randomsanity-1.0-1.fc25.noarch.rpm
 
 Enabling the systemd service:
 
