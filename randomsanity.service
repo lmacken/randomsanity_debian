@@ -5,7 +5,7 @@ Wants=systemd-random-seed.service
 
 [Service]
 EnvironmentFile=-/etc/sysconfig/randomsanity
-ExecStart=/usr/local/bin/randomsanity
+ExecStart=/usr/bin/randomsanity
 
 [Install]
 WantedBy=multi-user.target
