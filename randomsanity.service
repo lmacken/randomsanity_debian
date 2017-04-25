@@ -1,7 +1,7 @@
 [Unit]
 Description=Sanity check /dev/urandom using the randomsanity.org service
-After=network.target
-Wants=systemd-random-seed.service
+After=network-online.target
+Wants=network-online.target systemd-random-seed.service
 
 [Service]
 EnvironmentFile=-/etc/sysconfig/randomsanity
