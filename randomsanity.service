@@ -4,7 +4,7 @@ After=network.target
 Wants=systemd-random-seed.service
 
 [Service]
-#EnvironmentFile=/etc/sysconfig/randomsanity
+EnvironmentFile=-/etc/sysconfig/randomsanity
 ExecStart=/usr/local/bin/randomsanity
 
 [Install]
