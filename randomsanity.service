@@ -8,4 +8,4 @@ EnvironmentFile=-/etc/sysconfig/randomsanity
 ExecStart=/usr/local/bin/randomsanity
 
 [Install]
-WantedBy=user.target
+WantedBy=multi-user.target
